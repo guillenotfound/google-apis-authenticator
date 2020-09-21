@@ -4,6 +4,12 @@ Google APIs Authentication made simple, just export your service account via `GO
 
 This package knows when you are working on local environment or if you are using any Google service like Cloud Run, Cloud Functions,... Using a custom service account in those service is very convenient, but user impersonation is hard to achieve via googleapis nodeJS library, this library aims to unlock that block.
 
+### Installation:
+
+```
+npm install google-apis-authenticator
+```
+
 ### Requirements:
 
 Enable iAM API [here](https://console.cloud.google.com/apis/api/iam.googleapis.com/overview).
