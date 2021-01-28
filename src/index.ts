@@ -81,13 +81,13 @@ export class GoogleApisAuthenticator {
     })
 
     const iamPayload = `${this.unpaddedBase64encode(header)}.${this.unpaddedBase64encode(payload)}`
-    const { data } = await google.iam({ version: 'v1', auth: await auth.getClient() }).projects.serviceAccounts.signBlob({
+    const { data } = await google.iamcredentials({ version: 'v1', auth: await auth.getClient() }).projects.serviceAccounts.signBlob({
       name: `projects/-/serviceAccounts/${serviceAccountEmail}`,
       requestBody: {
-        bytesToSign: this.unpaddedBase64encode(iamPayload),
+        payload: this.unpaddedBase64encode(iamPayload),
       },
     })
-    const assertion = `${iamPayload}.${data.signature?.replace(/=*$/, '')}`
+    const assertion = `${iamPayload}.${data.signedBlob?.replace(/=*$/, '')}`
 
     const headers = { 'content-type': 'application/x-www-form-urlencoded' }
     const body = querystring.encode({ assertion, grant_type: 'urn:ietf:params:oauth:grant-type:jwt-bearer' })
