@@ -1,6 +1,6 @@
 {
   "name": "google-apis-authenticator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Google APIs authentication made simple for local & serverless.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
